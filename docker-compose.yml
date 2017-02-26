@@ -69,6 +69,7 @@ services:
       - "3011:1111"
     volumes_from:
       - virtuosodata
+      - openphactsrdf
     #restart: always
 
   virtuosodata:
@@ -77,7 +78,7 @@ services:
     volumes:
       # To specify alternative data folder, use instead:
       # - /media/big-SSD/virtuoso:/virtuoso
-      - /virtuoso
+      - /srv/ops-data/virtuoso:/virtuoso
 
   ## Uncomment either the 'virtuosostaging' service to load data from a Virtuoso backup,
   ## or uncomment 'virtuosostagingrdf' and 'openphactsrdf' to load data from RDF files.
@@ -97,6 +98,8 @@ services:
   virtuosostagingrdf:
     container_name: ops-virtuosostagingrdf
     build: virtuosodata-fromrdf
+    links:
+     - virtuoso
     volumes_from:
      - virtuosodata
      - openphactsrdf
