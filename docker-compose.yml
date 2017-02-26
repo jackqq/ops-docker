@@ -36,7 +36,7 @@ services:
       # Use full URL for calling external service.
       # Use service name if calling another web service defined in this file.
       # Do NOT include a trailing /
-      - API_URL=http://api:80
+      - API_URL=http://localhost:3002
     #restart: always
 
   api:
