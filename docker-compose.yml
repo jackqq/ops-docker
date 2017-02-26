@@ -104,10 +104,11 @@ services:
   ### Download from data.openphacts.org
   openphactsrdf:
     container_name: ops-openphactsrdf
-    build: openphacts-rdf
+    image: busybox
+#    build: openphacts-rdf
     volumes:
-      - /download
-      - /staging
+      - /srv/ops-data/download:/download
+      - /srv/ops-data/staging:/staging
       # To specify alternative data folder, use instead:
       # - /media/big-SSD/download:/download
       # - /media/big-SSD/staging:/staging
