@@ -19,7 +19,7 @@ function run_insert_query() {
 
     echo "execute SPARQL INSERT query in file: ${insert_query_file}"
 
-    (echo "SPARQL"; cat "${insert_query_file}"; echo ";") | isql 1111 dba dba
+    (echo "SPARQL"; cat "${insert_query_file}"; echo ";") | isql ops-virtuoso dba dba
 }
 
 for dataset in "${datasets[@]}"
@@ -28,4 +28,4 @@ do
 done
 
 
-isql 1111 dba dba exec="rdf_loader_run();"
+isql ops-virtuoso dba dba exec="rdf_loader_run();"

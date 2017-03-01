@@ -36,7 +36,7 @@ services:
       # Use full URL for calling external service.
       # Use service name if calling another web service defined in this file.
       # Do NOT include a trailing /
-      - API_URL=http://api:80
+      - API_URL=http://localhost:3002
     #restart: always
 
   api:
@@ -69,6 +69,7 @@ services:
       - "3011:1111"
     volumes_from:
       - virtuosodata
+      - openphactsrdf
     #restart: always
 
   virtuosodata:
@@ -77,7 +78,7 @@ services:
     volumes:
       # To specify alternative data folder, use instead:
       # - /media/big-SSD/virtuoso:/virtuoso
-      - /virtuoso
+      - /srv/ops-data/virtuoso:/virtuoso
 
   ## Uncomment either the 'virtuosostaging' service to load data from a Virtuoso backup,
   ## or uncomment 'virtuosostagingrdf' and 'openphactsrdf' to load data from RDF files.
@@ -97,6 +98,8 @@ services:
   virtuosostagingrdf:
     container_name: ops-virtuosostagingrdf
     build: virtuosodata-fromrdf
+    links:
+     - virtuoso
     volumes_from:
      - virtuosodata
      - openphactsrdf
@@ -104,10 +107,11 @@ services:
   ### Download from data.openphacts.org
   openphactsrdf:
     container_name: ops-openphactsrdf
-    build: openphacts-rdf
+    image: busybox
+#    build: openphacts-rdf
     volumes:
-      - /download
-      - /staging
+      - /srv/ops-data/download:/download
+      - /srv/ops-data/staging:/staging
       # To specify alternative data folder, use instead:
       # - /media/big-SSD/download:/download
       # - /media/big-SSD/staging:/staging
