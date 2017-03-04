@@ -16,6 +16,8 @@ function isql {
   isql 'exec=GRANT EXECUTE ON DB.DBA.SPARQL_DELETE_DICT_CONTENT TO "SPARQL";'
   isql 'exec=GRANT EXECUTE ON DB.DBA.RDF_OBJ_ADD_KEYWORD_FOR_GRAPH TO "SPARQL";'
 
-echo "Populating from /staging/staging.sql"
-isql /staging/staging.sql
+for o in /staging/staging*.sql ; do
+  echo "Populating from $o"
+  isql $o
+done
 
