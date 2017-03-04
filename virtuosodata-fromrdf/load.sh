@@ -21,7 +21,6 @@ ls -al /staging
 cp /staging.sql -f /staging/
 
 echo 'Loading RDF from /staging'
-tail -F /virtuoso/virtuoso.log &
 
 echo '2) ls -al /staging'
 ls -al /staging
