@@ -18,10 +18,9 @@ set -e
 echo '1) ls -al /staging'
 ls -al /staging
 
-cp /staging.sql -f /staging/
+cp /staging*.sql -f /staging/
 
 echo 'Loading RDF from /staging'
-tail -F /virtuoso/virtuoso.log &
 
 echo '2) ls -al /staging'
 ls -al /staging
@@ -32,9 +31,6 @@ ls -ld /usr/local/bin/isql
 echo 'ls -ld /usr/local/bin/staging.sh'
 ls -ld /usr/local/bin/staging.sh
 # which staging.sh
-
-echo 'cat /staging/staging.sql'
-cat /staging/staging.sql
 
 /usr/local/bin/staging.sh
 

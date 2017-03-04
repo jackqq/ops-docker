@@ -62,6 +62,7 @@ services:
   # SPARQL server
   virtuoso:
     container_name: ops-virtuoso
+    mem_limit: 4G
     #image: stain/virtuoso
     build: virtuoso-ops
     ports:
