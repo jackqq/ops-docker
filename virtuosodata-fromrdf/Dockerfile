@@ -8,6 +8,10 @@ COPY staging*.sql /
 COPY inferences.sh /usr/local/bin/
 COPY staging.sh /usr/local/bin/
 
+RUN chmod 755 /usr/local/bin/load.sh
+RUN chmod 755 /usr/local/bin/inferences.sh
+RUN chmod 755 /usr/local/bin/staging.sh
+
 CMD /usr/local/bin/inferences.sh \
  && /usr/local/bin/load.sh
 
