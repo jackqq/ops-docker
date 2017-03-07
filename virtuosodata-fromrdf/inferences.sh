@@ -1,5 +1,7 @@
 #!/bin/bash
 
+isql ops-virtuoso dba dba exec="trace_on('ddl_log', 'errors', 'dsn', 'sql_send', 'remote_transact', 'thread', 'cursor');"
+
 ## Datasets with a "insert_queries.sparql" file.
 
 declare -a datasets=(
