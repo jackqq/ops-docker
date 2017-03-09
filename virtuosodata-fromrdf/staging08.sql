@@ -38,6 +38,3 @@ ld_dir('/staging/wikipathways/data/wp/Chicken', '*.ttl.gz', 'http://www.wikipath
 ld_dir('/staging/wikipathways/data/wp/Chimpanzee', '*.ttl.gz', 'http://www.wikipathways.org');
 ld_dir('/staging/wikipathways/data/wp/Rat', '*.ttl.gz', 'http://www.wikipathways.org');
 ld_dir('/staging/wikipathways/data/wp/Fusarium_graminearum', '*.ttl.gz', 'http://www.wikipathways.org');
-
-
-rdf_loader_run();

@@ -19,5 +19,9 @@ function isql {
 for o in /staging/staging*.sql ; do
   echo "Populating from $o"
   isql $o
+  isql <<EOF
+    rdf_loader_run();
+    checkpoint;
+EOF
 done
 

@@ -40,6 +40,3 @@ ld_dir('/staging/doid/data', '*.owl.gz', 'http://www.openphacts.org/api/datasetD
 
 -- VoID Dataset Descriptors
 ld_dir('/staging/void/data', '*.ttl.gz', 'http://www.openphacts.org/api/datasetDescriptors');
-
-
-rdf_loader_run();
