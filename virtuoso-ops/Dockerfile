@@ -1,5 +1,10 @@
 FROM stain/virtuoso
 
+# BUGBUG performance tuning presuming RAM = 6 GB and DB = 200 GB
+RUN sed -i 's/\(NumberOfBuffers.*=\).*/\1 510000/' /etc/virtuoso-opensource-7/virtuoso.ini
+RUN sed -i 's/\(MaxDirtyBuffers.*=\).*/\1 380000/' /etc/virtuoso-opensource-7/virtuoso.ini
+RUN sed -i 's/\(MaxCheckpointRemap.*=\).*/\1 6553600/' /etc/virtuoso-opensource-7/virtuoso.ini
+
 # http settings
 RUN sed -i 's/\(ServerThreads.*=\).*/\1 30/' /etc/virtuoso-opensource-7/virtuoso.ini
 RUN sed -i 's/\(MaxCachedProxyConnections.*=\).*/\1 30/' /etc/virtuoso-opensource-7/virtuoso.ini

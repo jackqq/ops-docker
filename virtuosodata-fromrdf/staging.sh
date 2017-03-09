@@ -4,7 +4,7 @@
 set -e
 
 function isql {
- /usr/local/bin/isql ops-virtuoso dba dba VERBOSE=OFF BANNER=OFF PROMPT=OFF ECHO=OFF BLOBS=ON ERRORS=stdout "$@"
+ /usr/local/bin/isql ops-virtuoso dba dba VERBOSE=on BANNER=on PROMPT=on ECHO=on BLOBS=ON ERRORS=stdout "$@"
 }
 
 
@@ -19,5 +19,10 @@ function isql {
 for o in /staging/staging*.sql ; do
   echo "Populating from $o"
   isql $o
+  isql <<EOF
+    log_enable(2);
+    rdf_loader_run();
+    checkpoint;
+EOF
 done
 
