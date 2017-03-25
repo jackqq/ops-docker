@@ -79,7 +79,7 @@ services:
     volumes:
       # To specify alternative data folder, use instead:
       # - /media/big-SSD/virtuoso:/virtuoso
-      - /srv/ops-data/virtuoso:/virtuoso
+      - /srv/ops-data/virtuoso/db:/virtuoso
 
   ## Uncomment either the 'virtuosostaging' service to load data from a Virtuoso backup,
   ## or uncomment 'virtuosostagingrdf' and 'openphactsrdf' to load data from RDF files.
@@ -111,8 +111,8 @@ services:
     image: busybox
 #    build: openphacts-rdf
     volumes:
-      - /srv/ops-data/download:/download
-      - /srv/ops-data/staging:/staging
+      - /srv/ops-data/virtuoso/download:/download
+      - /srv/ops-data/virtuoso/staging:/staging
       # To specify alternative data folder, use instead:
       # - /media/big-SSD/download:/download
       # - /media/big-SSD/staging:/staging
@@ -131,6 +131,8 @@ services:
     container_name: ops-mysqlstaging
     build: mysqlstaging
     #image: openphacts/identitymappingservice-staging
+    volumes:
+      - /srv/ops-data/mysql/download:/download
     links:
       - mysql
     environment:
@@ -161,7 +163,7 @@ services:
     volumes:
        # To specify alternative data folder, use instead:
        # - /media/big-SSD/mysql:/var/lib/mysql
-      - /var/lib/mysql
+      - /srv/ops-data/mysql/db:/var/lib/mysql
 
   ### END custom loading
 
