@@ -16,7 +16,7 @@ cd /staging
 rm -rf staging
 mkdir -p staging staged
 for file in *.sql.gz ; do
-  db=`echo $file | sed 's/\\.gz$//' | sed 's/\\.sql//'`
+  db=ims
   staged=staged/$db
   staging=staging/$db
   if ! [ -f $staged ] ; then

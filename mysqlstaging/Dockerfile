@@ -13,4 +13,4 @@ ENV OPS_LAST_REFRESH 2016.11.11 9pm
 
 COPY staging.sh /usr/local/bin/
 
-CMD /usr/local/bin/download.sh && mv /download/*.sql.gz /staging/ims.sql.gz && /usr/local/bin/staging.sh
+CMD /usr/local/bin/download.sh && ln -sf /download/*.sql.gz /staging/ && /usr/local/bin/staging.sh

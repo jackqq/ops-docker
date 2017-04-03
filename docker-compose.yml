@@ -133,6 +133,7 @@ services:
     #image: openphacts/identitymappingservice-staging
     volumes:
       - /srv/ops-data/mysql/download:/download
+      - /srv/ops-data/mysql/staging:/staging
     links:
       - mysql
     environment:
